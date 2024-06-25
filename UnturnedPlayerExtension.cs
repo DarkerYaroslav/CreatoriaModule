@@ -41,8 +41,8 @@ public static class UnturnedPlayerExtension
     public static void ClearInventory(this PlayerInventory inventory)
     {
         UnturnedPlayer player = UnturnedPlayer.FromPlayer(inventory.player);
-        player.Player.equipment.ReceiveSlot(0, 0, new byte[0]);
-        player.Player.equipment.ReceiveSlot(1, 0, new byte[0]);
+        player.Player.equipment.ReceiveUpdateState(0, 0, new byte[0]);
+        player.Player.equipment.ReceiveUpdateState(1, 0, new byte[0]);
         for (byte page = 0; page < PlayerInventory.PAGES; page++)
         {
             if (page == PlayerInventory.AREA)
