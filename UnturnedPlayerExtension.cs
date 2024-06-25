@@ -1,13 +1,18 @@
-﻿using Rocket.Core;
+﻿using CreatoriaModule.Patches;
+using Rocket.API;
+using Rocket.Core;
+using Rocket.Unturned;
 using Rocket.Unturned.Items;
 using Rocket.Unturned.Player;
 using SDG.NetTransport;
 using SDG.Unturned;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static SDG.Unturned.EffectManager;
 
 public static class UnturnedPlayerExtension
 {
@@ -20,6 +25,7 @@ public static class UnturnedPlayerExtension
             ItemJar = itemJar;
             Page = page;
         }
+        public ItemCreatoria() { }
     }
     private static ITransportConnection TransportConnection(this UnturnedPlayer player) =>
         player.Player.channel.GetOwnerTransportConnection();
