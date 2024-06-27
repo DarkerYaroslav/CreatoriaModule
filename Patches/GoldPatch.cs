@@ -9,9 +9,16 @@ namespace CreatoriaModule.Patches
 
         public static event CheckLicenseHandler CheckLicense;
 
-        [HarmonyPatch(typeof(SteamGameServer), methodName: "UserHasLicenseForApp")]
+        /// <summary>
+        /// Every player has a gold account.
+        /// </summary>
+        /// <param name="__result"></param>
+        /// <param name="steamID"></param>
+        /// <param name="appID"></param>
+        /// <returns></returns>
+        [HarmonyPatch(typeof(SteamGameServer), nameof(SteamGameServer.UserHasLicenseForApp))]
         [HarmonyPrefix]
-        public static bool UserHasLicenseHandle(CSteamID steamID, AppId_t appID, ref EUserHasLicenseForAppResult __result)
+        public static bool UserHasLicenseHandle(ref EUserHasLicenseForAppResult __result, CSteamID steamID, AppId_t appID)
         {
             __result = EUserHasLicenseForAppResult.k_EUserHasLicenseResultHasLicense;
             CheckLicense?.Invoke(steamID, ref __result);
