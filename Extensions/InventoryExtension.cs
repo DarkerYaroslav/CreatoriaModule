@@ -52,14 +52,17 @@ namespace CreatoriaModule.Extensions
             return list;
         }
 
-        public static bool RemoveItem(this PlayerInventory inventory, ushort id, int count)
+        public static bool RemoveItem(this PlayerInventory inventory, ushort id, int count = 1)
         {
             UnturnedPlayer player = UnturnedPlayer.FromPlayer(inventory.player);
             var list = GetItems(inventory).Where(p => p.ItemJar.interactableItem.asset.id == id).ToList();
             if (!list.IsEmpty() || list.Count() >= count)
             {
-                foreach (var item in list)
+                for (int i = 0; i < list.Count(); i++)
+                {
+                    var item = list[i];
                     player.Player.inventory.removeItem(item.Page, player.Player.inventory.getIndex(item.Page, item.ItemJar.x, item.ItemJar.y));
+                }
                 return true;
             }
             return false;
