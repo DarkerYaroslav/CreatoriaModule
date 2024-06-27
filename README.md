@@ -8,7 +8,7 @@ We recommend using this module with [RocketModFix][rocketmodfix].
 
 # Why a module and not a library?
 
-**The module is better suited for correction purposes than the library**
+**The module is better suited for harmony patches and events than the library**
 
 ## Compatibility
 
