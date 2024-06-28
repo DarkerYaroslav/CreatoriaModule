@@ -94,9 +94,10 @@
     <Compile Include="Extensions\InventoryExtension.cs" />
     <Compile Include="Extensions\EffectExtension.cs" />
     <Compile Include="Extensions\PlayerExtension.cs" />
+    <Compile Include="Patches\EffectPatch.cs" />
     <Compile Include="Patches\MarkerPatch.cs" />
     <Compile Include="Patches\GrenadePatch.cs" />
-    <Compile Include="Module.cs" />
+    <Compile Include="CModule.cs" />
     <Compile Include="Patches\NicknamePatch.cs" />
     <Compile Include="Patches\GoldPatch.cs" />
     <Compile Include="Patches\VoicePatch.cs" />

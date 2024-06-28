@@ -44,3 +44,4 @@ C:\Users\artyo\source\repos\CreatoriaModule\CreatoriaModule\obj\Debug\CreatoriaM
 C:\Users\artyo\source\repos\CreatoriaModule\CreatoriaModule\obj\Debug\CreatoriaModule.csproj.CopyComplete
 C:\Users\artyo\source\repos\CreatoriaModule\CreatoriaModule\obj\Debug\CreatoriaModule.dll
 C:\Users\artyo\source\repos\CreatoriaModule\CreatoriaModule\obj\Debug\CreatoriaModule.pdb
+C:\Users\artyo\source\repos\CreatoriaModule\CreatoriaModule\bin\Debug\Newtonsoft.Json.xml

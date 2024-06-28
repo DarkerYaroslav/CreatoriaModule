@@ -12,10 +12,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static CreatoriaModule.Patches.EffectPatch;
 
 namespace CreatoriaModule.Patches
 {
-    public class Module : IModuleNexus
+    public class CModule : IModuleNexus
     {
         public static Harmony harmony;
         public void initialize()
