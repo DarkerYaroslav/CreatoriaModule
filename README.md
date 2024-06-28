@@ -35,7 +35,7 @@ Feel free to join our [Discord Server][discordserver_url].
 - [GrenadePatch.cs][GrenadePatch] - event when granade explode
 - [MarkerPatch.cs][MarkerPatch] - event when player set marker
 - [NicknamePatch.cs][NicknamePatch] - event when you can change a nickname player!(call on join)
-- [EffectPatch.cs][NicknamePatch] - Effect events(IN DEVELOPING, now it off)
+- [EffectPatch.cs][EffectPatch] - Effect events(IN DEVELOPING, now it off)
 - [VoicePatch.cs][VoicePatch] - !need to finished!
 
 - [Extensions][Extensions] - extension😂 methods
