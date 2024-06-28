@@ -34,7 +34,8 @@ Feel free to join our [Discord Server][discordserver_url].
 - [GoldPatch.cs][GoldPatch] - every player has a gold account (expand premium function, e.g. multi/more character on server)
 - [GrenadePatch.cs][GrenadePatch] - event when granade explode
 - [MarkerPatch.cs][MarkerPatch] - event when player set marker
-- [NicknamePatch.cs][NicknamePatch] - незнаю нахуя он нужен
+- [NicknamePatch.cs][NicknamePatch] - event when you can change a nickname player!(call on join)
+- [EffectPatch.cs][NicknamePatch] - Effect events(IN DEVELOPING, now it off)
 - [VoicePatch.cs][VoicePatch] - !need to finished!
 
 - [Extensions][Extensions] - extension😂 methods
@@ -48,4 +49,5 @@ Feel free to join our [Discord Server][discordserver_url].
 [MarkerPatch]: https://github.com/DarkerYaroslav/CreatoriaModule/blob/main/Patches/MarkerPatch.cs
 [NicknamePatch]: https://github.com/DarkerYaroslav/CreatoriaModule/blob/main/Patches/NicknamePatch.cs
 [VoicePatch]: https://github.com/DarkerYaroslav/CreatoriaModule/blob/main/Patches/VoicePatch.cs
+[EffectPatch]: https://github.com/DarkerYaroslav/CreatoriaModule/blob/main/Patches/EffectPatch.cs
 [Extensions]: https://github.com/DarkerYaroslav/CreatoriaModule/tree/main/Extensions
