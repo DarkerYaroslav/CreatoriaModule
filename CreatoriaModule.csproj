@@ -11,6 +11,7 @@
     <AssemblyName>CreatoriaModule</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <LangVersion>default</LangVersion>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,8 +90,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\datacfg.cs" />
-    <Compile Include="Config\jsonreader.cs" />
+    <Compile Include="Config\JsonConfiguration.cs" />
+    <Compile Include="Config\JsonReader.cs" />
     <Compile Include="Extensions\InventoryExtension.cs" />
     <Compile Include="Extensions\EffectExtension.cs" />
     <Compile Include="Extensions\PlayerExtension.cs" />
