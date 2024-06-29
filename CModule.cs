@@ -1,63 +1,71 @@
 ﻿using CreatoriaModule.Config;
-using CreatoriaModule.Patches;
 using HarmonyLib;
+using Rocket.Core.Logging;
+using Rocket.Unturned.Events;
+using Rocket.Unturned.Player;
 using SDG.Framework.Modules;
 using SDG.Unturned;
 using Steamworks;
-using Logger = Rocket.Core.Logging.Logger;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using static CreatoriaModule.Patches.EffectPatch;
 
-namespace CreatoriaModule
+namespace CreatoriaModule.Patches
 {
     public class CModule : IModuleNexus
     {
-        private static Harmony _harmony;
+        public static Harmony harmony;
         public void initialize()
         {
-            _harmony = new Harmony("creatoria.module");
+            try
+            {
+                var field = typeof(Customization).GetField("FREE_CHARACTERS", BindingFlags.Static | BindingFlags.Public);
+                field.SetValue(null, (byte)5);
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex.Message);
+            }
+            harmony = new Harmony("creatoria.module");
             PatchAll();
-
-            Logger.Log(" ############################################# ");
-            Logger.Log(" ########## CreatoriaModule loaded! ########## ");
-            Logger.Log(" ############################################# ");
         }
-        
-        public void shutdown()
+        public void shutdown() => harmony.UnpatchAll("creatoria.module");
+        private void PatchAll()
         {
-            _harmony.UnpatchAll("creatoria.module");
-        }
-
-        private static void PatchAll()
-        {
-            var cfg = JsonReader.GetCfg();
+            var cfg = jsonreader.GetCfg();
             if (cfg.GrenadePatch.Value)
             {
                 var original = typeof(Grenade).GetMethod("Explode");
                 var postfix = typeof(GrenadePatch).GetMethod("Explode");
-                _harmony.Patch(original, postfix: new HarmonyMethod(postfix));
+                harmony.Patch(original, postfix: new HarmonyMethod(postfix));
             }
             if (cfg.NicknamePatch.Value)
             {
                 var original = typeof(Provider).GetMethod("onCheckValidWithExplanation");
                 var postfix = typeof(NicknamePatch).GetMethod("onCheckValidWithExplanation");
-                _harmony.Patch(original, postfix: new HarmonyMethod(postfix));
+                harmony.Patch(original, postfix: new HarmonyMethod(postfix));
             }
             if (cfg.VoicePatch.Value)
             {
                 var original = typeof(PlayerVoice).GetMethod("handleRelayVoiceCulling_Proximity");
                 var prefix = typeof(VoicePatch).GetMethod("handler");
-                _harmony.Patch(original, new HarmonyMethod(prefix));
+                harmony.Patch(original, new HarmonyMethod(prefix));
             }
             if (cfg.MarkerPatch.Value)
             {
                 var original = typeof(PlayerQuests).GetMethod("replicateSetMarker");
                 var prefix = typeof(MarkerPatch).GetMethod("replicateSetMarker");
-                _harmony.Patch(original, new HarmonyMethod(prefix));
+                harmony.Patch(original, new HarmonyMethod(prefix));
             }
             if (cfg.GoldPatch.Value)
             {
                 var original = typeof(SteamGameServer).GetMethod("UserHasLicenseForApp");
                 var prefix = typeof(GoldPatch).GetMethod("UserHasLicenseHandle");
-                _harmony.Patch(original, new HarmonyMethod(prefix));
+                harmony.Patch(original, new HarmonyMethod(prefix));
             }
         }
     }

@@ -1,7 +1,14 @@
-﻿using Rocket.Core;
+﻿using CreatoriaModule.Patches;
+using Rocket.Core;
 using Rocket.Unturned.Player;
 using SDG.NetTransport;
 using SDG.Unturned;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static CreatoriaModule.Patches.EffectPatch;
 
 namespace CreatoriaModule.Extensions
 {
@@ -14,9 +21,6 @@ namespace CreatoriaModule.Extensions
         /// <returns></returns>
         public static ITransportConnection TransportConnection(this UnturnedPlayer player) =>
             player.Player.channel.GetOwnerTransportConnection();
-
-        public static SteamPlayer SteamPlayer(this ITransportConnection transportConnection) =>
-            Provider.findPlayer(transportConnection);
         /// <summary>
         /// Checking if a player has permission group
         /// </summary>

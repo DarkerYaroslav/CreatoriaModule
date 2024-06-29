@@ -1,22 +1,31 @@
 ﻿using Rocket.Unturned.Player;
 using SDG.Unturned;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CreatoriaModule.Extensions
 {
     public static class InventoryExtension
     {
-        public class ItemCreatoria(ItemJar itemJar, byte page)
+        public class ItemCreatoria
         {
-            public ItemJar ItemJar = itemJar;
-            public byte Page = page;
+            public ItemJar ItemJar;
+            public byte Page;
+            public ItemCreatoria(ItemJar itemJar, byte page)
+            {
+                ItemJar = itemJar;
+                Page = page;
+            }
+            public ItemCreatoria() { }
         }
         public static void ClearInventory(this PlayerInventory inventory)
         {
             UnturnedPlayer player = UnturnedPlayer.FromPlayer(inventory.player);
-            player.Player.equipment.ReceiveSlot(0, 0, new byte[0]);
-            player.Player.equipment.ReceiveSlot(1, 0, new byte[0]);
+            player.Player.equipment.ReceiveUpdateState(0, 0, new byte[0]);
+            player.Player.equipment.ReceiveUpdateState(1, 0, new byte[0]);
             for (byte page = 0; page < PlayerInventory.PAGES; page++)
             {
                 if (page == PlayerInventory.AREA)
@@ -38,9 +47,7 @@ namespace CreatoriaModule.Extensions
             foreach (var items in UnturnedPlayer.FromPlayer(inventory.player).Player.inventory.items.ToArray().Where(x => x != null))
             {
                 foreach (var item in items.items.ToArray().Where(x => x != null))
-                {
                     list.Add(new ItemCreatoria(item, items.page));
-                }
             }
             return list;
         }
